@@ -9,14 +9,13 @@ public class Main {
         StringTokenizer st;
         double sum = 0;
         double creditSum = 0;
+        String str;
 
-        while(true) {
-            String str = br.readLine();
-            if (str.equals(" ")) break;
+        while (true) {
+            str = br.readLine();
+            if (str == null) break;
             st = new StringTokenizer(str);
-            if (!st.hasMoreTokens()) {
-                break;
-            }
+
             st.nextToken();
             double credit = Double.parseDouble(st.nextToken());
             String grade = st.nextToken();
