@@ -1,36 +1,35 @@
 package org.example.p2941;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(br.readLine());
+
+        String str = br.readLine();
         int answer = 0;
 
-        for (int i = 0; i < n; i++) {
-            // 한번 나온 단어가 다시 나오면 그룹단어로 안쳐준다
-            // int[br.] 해가지고 count가 0이 아닌데 나중에 또 나오면 빼는걸로.
-            String str = br.readLine();
-            boolean[] count = new boolean[26];
-            boolean isGroup = false;
+        String[] croatia = {"c=", "c-", "dz=", "d-", "lj",
+                "nj", "s=", "z=", "a", "b", "c", "d", "e", "f", "g", "h",
+                "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+                "t", "u", "v", "w", "x", "y", "z"};
 
-            for (int j = 0; j < str.length(); j++) {
-                isGroup = false;
-                int idx = str.charAt(j);
-                if (!count[idx - 97]) {
-                    count[idx - 97] = true;
-                } else {
-                    if (str.charAt(j - 1) != str.charAt(j)) {
-                        break;
-                    }
+        // 끝까지 갔다는걸 어떻게 체크할까? split?
+
+        while (true) {
+            for (int i = 0; i < croatia.length; i++) {
+                if (str.contains(croatia[i])) {
+                    answer++;
+                    str = str.replaceFirst(croatia[i], " ");
+                    break;
                 }
-                isGroup = true;
             }
-            if (isGroup) {
-                answer++;
+            String sub = str.replace(" ", "");
+            if (sub.equals("")) {
+                break;
             }
         }
         System.out.println(answer);
