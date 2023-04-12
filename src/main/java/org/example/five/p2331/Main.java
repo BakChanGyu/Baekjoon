@@ -1,4 +1,4 @@
-package org.example.four.p2331;
+package org.example.five.p2331;
 
 import java.io.BufferedReader;
 import java.io.IOException;
